@@ -9,7 +9,7 @@ return {
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
-    branch = '0.1.x',
+    branch = 'master',
     dependencies = {
       'nvim-lua/plenary.nvim',
       { -- If encountering errors, see telescope-fzf-native README for installation instructions
@@ -56,12 +56,43 @@ return {
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
         --
-        -- defaults = {
-        --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-        --   },
-        -- },
-        -- pickers = {}
+        defaults = {
+          --   mappings = {
+          --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
+          --   },
+          layout_strategy = 'vertical',
+          layout_config = {
+            center = {
+              width = 0.6,
+            },
+            horizontal = {
+              preview_width = 0.4,
+              preview_cutoff = 100,
+            },
+            vertical = {
+              width = 0.8,
+              preview_height = 0.4,
+              preview_cutoff = 20,
+            },
+          },
+          path_display = { 'filename_first' },
+        },
+        pickers = {
+          buffers = {
+            previewer = false,
+            mappings = {
+              n = {
+                ['D'] = require('telescope.actions').delete_buffer,
+              },
+            },
+            opts = {
+              sort_mru = true,
+            },
+          },
+          git_files = {
+            show_untracked = true,
+          },
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
@@ -84,7 +115,14 @@ return {
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-      vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+      vim.keymap.set('n', '<C-p>', function()
+        if pcall(require('telescope.builtin').git_files) then
+        else
+          print '[!] Directory is not a git repository. Running search files instead.'
+          require('telescope.builtin').find_files()
+        end
+      end, { desc = 'Search Git files' })
+      -- vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
@@ -105,9 +143,15 @@ return {
       end, { desc = '[S]earch [/] in Open Files' })
 
       -- Shortcut for searching your Neovim configuration files
-      vim.keymap.set('n', '<leader>sn', function()
+      vim.keymap.set('n', '<leader>vrc', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[S]earch [N]eovim files' })
+
+      vim.keymap.set('n', '<F1>', function()
+        builtin.help_tags {
+          previewer = false,
+        }
+      end, { desc = 'Search help_tags' })
     end,
   },
 }
