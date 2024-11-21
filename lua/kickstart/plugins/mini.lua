@@ -28,9 +28,11 @@ return {
 
       require('mini.pairs').setup()
 
-      require('mini.jump2d').setup {
+      local minijump2d = require 'mini.jump2d'
+      minijump2d.setup {
         view = { dim = true },
       }
+      vim.keymap.set('n', '<CR>', '<cmd>lua MiniJump2d.start(MiniJump2d.builtin_opts.single_character)<CR>')
     end,
   },
 }

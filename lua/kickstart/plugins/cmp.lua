@@ -19,12 +19,13 @@ return {
           -- `friendly-snippets` contains a variety of premade snippets.
           --    See the README about individual language/framework/plugin snippets:
           --    https://github.com/rafamadriz/friendly-snippets
-          -- {
-          --   'rafamadriz/friendly-snippets',
-          --   config = function()
-          --     require('luasnip.loaders.from_vscode').lazy_load()
-          --   end,
-          -- },
+          'onsails/lspkind.nvim',
+          {
+            'rafamadriz/friendly-snippets',
+            config = function()
+              require('luasnip.loaders.from_vscode').lazy_load()
+            end,
+          },
         },
       },
       'saadparwaiz1/cmp_luasnip',
@@ -110,6 +111,22 @@ return {
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
+        },
+        formatting = {
+          expandable_indicator = true,
+          fields = { 'abbr', 'kind', 'menu' },
+          format = require('lspkind').cmp_format {
+            mode = 'text_symbol',
+            maxwidth = 50,
+            ellipsis_char = '...',
+            menu = {
+              nvim_lsp = '[LSP]',
+              luasnip = '[LuaSnip]',
+            },
+            -- before = function (entry, vim_time)
+            -- ...
+            -- end
+          },
         },
       }
     end,

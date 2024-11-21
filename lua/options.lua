@@ -4,13 +4,10 @@
 --  For more options, you can see `:help option-list`
 
 -- Make line numbers default
--- vim.opt.number = true
+vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
 vim.opt.relativenumber = true
-
--- Display current line instead of 0 for relativenumber
-vim.opt.number = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = ''
@@ -25,6 +22,11 @@ vim.opt.showmode = false
 vim.schedule(function()
   vim.opt.clipboard = 'unnamed'
 end)
+
+-- disable wrapping
+vim.opt.wrap = false
+vim.opt.showbreak = '󰘍 '
+vim.opt.linebreak = true
 
 -- Enable break indent
 vim.opt.breakindent = true

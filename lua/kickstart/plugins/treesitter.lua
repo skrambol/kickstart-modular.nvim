@@ -53,7 +53,9 @@ return {
       local context = require 'treesitter-context'
 
       vim.keymap.set('n', '[c', context.go_to_context, { desc = 'Go to upper [c]ontext' })
-      vim.keymap.set('n', '<leader>tc', context.toggle, { desc = '[T]oggle treesitter [c]ontext' })
+      vim.keymap.set('n', '<leader>tc', function()
+        context.toggle()
+      end, { desc = '[T]oggle treesitter [c]ontext' })
     end,
   },
 }

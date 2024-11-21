@@ -75,7 +75,7 @@ return {
               preview_cutoff = 20,
             },
           },
-          path_display = { 'filename_first' },
+          path_display = { 'filename_first', 'smart' },
         },
         pickers = {
           buffers = {
@@ -115,6 +115,7 @@ return {
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
+      vim.keymap.set('n', '<C-b>', builtin.buffers, { desc = '[S]earch [B]uffers' })
       vim.keymap.set('n', '<C-p>', function()
         if pcall(require('telescope.builtin').git_files) then
         else

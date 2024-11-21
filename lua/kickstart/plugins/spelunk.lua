@@ -1,3 +1,4 @@
+-- TODO: find replacement, probably shada-% per directory/project?
 return {
   {
     'EvWilson/spelunk.nvim',
@@ -5,7 +6,15 @@ return {
       'nvim-lua/plenary.nvim',
     },
     config = function()
-      require('spelunk').setup { enable_persist = true }
+      require('spelunk').setup {
+        enable_persist = true,
+        base_mappings = {
+          toggle = '<C-h>',
+        },
+        window_mappings = {
+          close = '<Esc>',
+        },
+      }
     end,
   },
 }

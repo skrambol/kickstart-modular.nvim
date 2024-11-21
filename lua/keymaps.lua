@@ -5,10 +5,6 @@
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
--- Diagnostic keymaps
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
-
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
@@ -32,6 +28,16 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 -- vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 -- vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- move through wraps (logs, md, etc)
+-- if v.count (motion number) is >0, move to relative number
+--   else move through wraps
+vim.keymap.set({ 'n', 'x' }, 'j', function()
+  return vim.v.count > 0 and 'j' or 'gj'
+end, { desc = 'Move through wraps', expr = true })
+vim.keymap.set({ 'n', 'x' }, 'k', function()
+  return vim.v.count > 0 and 'k' or 'gk'
+end, { desc = 'Move through wraps', expr = true })
+
 -- Move lines
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { silent = true, desc = 'move selection down one line' })
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { silent = true, desc = 'move selection up one line' })
@@ -48,6 +54,8 @@ vim.keymap.set('i', '<C-s>', '<esc><cmd>w<CR>', { silent = true, desc = 'Write t
 vim.keymap.set('n', '<leader>td', function()
   vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end, { silent = true, desc = '[T]oggle [d]iagnostic' })
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 -- Netrw
 vim.keymap.set('n', '<F3>', '<cmd>Explore<CR>', { silent = true, desc = 'Open Netrw' })
