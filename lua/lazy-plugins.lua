@@ -45,7 +45,7 @@ require('lazy').setup({
 
   require 'kickstart.plugins.lualine',
 
-  require 'kickstart.plugins.spelunk',
+  require 'kickstart.plugins.local-viminfo',
 
   -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.lint',
