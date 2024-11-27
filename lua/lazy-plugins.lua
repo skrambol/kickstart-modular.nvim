@@ -47,6 +47,8 @@ require('lazy').setup({
 
   require 'kickstart.plugins.local-viminfo',
 
+  require 'kickstart.plugins.harpoon',
+
   -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.lint',
 
