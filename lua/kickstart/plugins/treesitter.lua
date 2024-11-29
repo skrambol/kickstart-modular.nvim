@@ -52,6 +52,10 @@ return {
     init = function()
       local context = require 'treesitter-context'
 
+      context.setup {
+        max_lines = 5,
+        multiline_threshold = 1,
+      }
       vim.keymap.set('n', '[c', context.go_to_context, { desc = 'Go to upper [c]ontext' })
       vim.keymap.set('n', '<leader>tc', function()
         context.toggle()
