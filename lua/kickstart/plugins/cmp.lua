@@ -118,7 +118,7 @@ return {
           format = require('lspkind').cmp_format {
             mode = 'text_symbol',
             maxwidth = 50,
-            ellipsis_char = '...',
+            ellipsis_char = '',
             menu = {
               nvim_lsp = '[LSP]',
               luasnip = '[LuaSnip]',
