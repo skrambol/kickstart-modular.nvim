@@ -50,7 +50,9 @@ require('lazy').setup({
 
   require 'kickstart.plugins.harpoon',
 
-  -- require 'kickstart.plugins.debug',
+  -- require 'kickstart.plugins.nvim-java',
+
+  require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.lint',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
