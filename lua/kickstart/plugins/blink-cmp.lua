@@ -24,7 +24,7 @@ return {
     -- your own keymap.
     keymap = {
       preset = 'default',
-      ['<C-space>'] = { 'select_and_accept' },
+      ['<C-y>'] = { 'select_and_accept' },
     },
 
     appearance = {

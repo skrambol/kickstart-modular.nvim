@@ -2,4 +2,10 @@
 --  I promise not to create any merge conflicts in this directory :)
 --
 -- See the kickstart.nvim README for more information
-return {}
+return {
+  require 'custom.plugins.nightfox',
+  require 'custom.plugins.fugitive',
+  require 'custom.plugins.lualine',
+  require 'custom.plugins.local-viminfo',
+  require 'custom.plugins.dart',
+}

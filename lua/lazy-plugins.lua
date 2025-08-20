@@ -36,21 +36,9 @@ require('lazy').setup({
   -- require 'kickstart/plugins/cmp',
   require 'kickstart/plugins/blink-cmp',
 
-  require 'kickstart/plugins/nightfox',
-
   require 'kickstart/plugins/mini',
 
   require 'kickstart/plugins/treesitter',
-
-  require 'kickstart.plugins.fugitive',
-
-  require 'kickstart.plugins.lualine',
-
-  require 'kickstart.plugins.local-viminfo',
-
-  require 'kickstart.plugins.harpoon',
-
-  -- require 'kickstart.plugins.nvim-java',
 
   require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.lint',
@@ -59,7 +47,7 @@ require('lazy').setup({
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  -- { import = 'custom.plugins' },
+  { import = 'custom.init' },
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!

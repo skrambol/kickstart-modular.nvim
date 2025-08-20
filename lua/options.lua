@@ -75,4 +75,6 @@ vim.g.netrw_fastbrowse = 0
 -- Diagnostic
 vim.diagnostic.config { virtual_text = false }
 
+vim.opt.ts = 2
+
 -- vim: ts=2 sts=2 sw=2 et
